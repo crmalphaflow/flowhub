@@ -332,6 +332,7 @@ function initAuditModal() {
 
   function openAudit(event) {
     if (event) event.preventDefault();
+    modal.classList.remove('reveal', 'active');
     modal.classList.remove('hidden');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('audit-modal-open');
@@ -1012,7 +1013,7 @@ function initScrollAnimations() {
   const sections = document.querySelectorAll('section');
   sections.forEach((sec, idx) => {
     // Skip hero since it has entrance animations already
-    if (idx > 0) {
+    if (idx > 0 && !sec.classList.contains('audit-modal')) {
       sec.classList.add('reveal');
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
