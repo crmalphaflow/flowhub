@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlphaflowCRM | KI-Rezeptionist Emma</title>
+  <meta name="description" content="Testen Sie Emma, den Alphaflow KI-Rezeptionisten für verpasste Anrufe, Qualifizierung und automatische Terminbuchung.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-brand-bg text-white font-sans antialiased overflow-x-hidden">
+
+  <header class="navbar" id="main-nav">
+    <div class="container nav-container">
+      <a href="./index.html" class="nav-logo">
+        <img src="./alphaflowcrm_logo.png" alt="AlphaflowCRM" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-menu">
+        <a href="./index.html#problem" class="nav-link">Problem</a>
+        <a href="./index.html#rechner" class="nav-link">Umsatz-Rechner</a>
+        <a href="./index.html#loesung" class="nav-link">Die 5 Säulen</a>
+        <a href="./ki-rezeptionist.html" class="nav-link nav-link-active">KI-Rezeptionist</a>
+        <a href="./index.html#simulator" class="nav-link">KI-Simulator</a>
+        <a href="./index.html#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="./index.html#audit-quiz" class="btn btn-primary btn-sm">Gratis Audit starten →</a>
+      </div>
+
+      <button class="burger-menu" id="mobile-menu-btn" aria-label="Menü öffnen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-menu">
+      <a href="./index.html#problem" class="mobile-nav-link">Problem</a>
+      <a href="./index.html#rechner" class="mobile-nav-link">Umsatz-Rechner</a>
+      <a href="./index.html#loesung" class="mobile-nav-link">Die 5 Säulen</a>
+      <a href="./ki-rezeptionist.html" class="mobile-nav-link">KI-Rezeptionist</a>
+      <a href="./index.html#simulator" class="mobile-nav-link">KI-Simulator</a>
+      <a href="./index.html#faq" class="mobile-nav-link">FAQ</a>
+      <a href="./index.html#audit-quiz" class="btn btn-primary btn-block">Gratis Audit starten →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="receptionist-hero">
+      <div class="receptionist-bg"></div>
+      <div class="receptionist-bg-overlay"></div>
+      <div class="container receptionist-hero-grid">
+        <div class="receptionist-copy">
+          <span class="section-badge">Alphaflow KI-Rezeptionist</span>
+          <h1 class="receptionist-title">Emma nimmt ab, wenn Ihr Team gerade keine Zeit hat.</h1>
+          <p class="receptionist-desc">
+            Der KI-Rezeptionist sichert verpasste Anrufe, qualifiziert Interessenten und übergibt strukturierte Termine direkt an Ihr Team.
+          </p>
+          <div class="receptionist-actions">
+            <a href="#voice-demo" class="btn btn-primary btn-lg">Emma testen →</a>
+            <a href="./index.html#audit-quiz" class="btn btn-secondary btn-lg">Umsatzlücke berechnen</a>
+          </div>
+          <div class="receptionist-proof-grid">
+            <div class="proof-chip">
+              <strong>24/7</strong>
+              <span>Annahme & Qualifizierung</span>
+            </div>
+            <div class="proof-chip">
+              <strong>5 Min.</strong>
+              <span>Reaktionszeit-Ziel</span>
+            </div>
+            <div class="proof-chip">
+              <strong>CRM</strong>
+              <span>Automatisch dokumentiert</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="receptionist-panel" id="voice-demo">
+          <div class="voice-widget" id="voice-agent-widget">
+            <div class="voice-widget-header">
+              <div class="voice-mascot idle" id="voice-mascot">
+                <img src="./auramascot.png" alt="Aura Mascot" class="voice-mascot-img">
+              </div>
+              <div>
+                <h2>Emma</h2>
+                <p>KI-Rezeptionistin</p>
+              </div>
+            </div>
+
+            <div class="voice-status idle" id="voice-status">Bereit</div>
+
+            <div class="voice-transcript" id="voice-transcript">
+              <div class="voice-line system">System bereit. Klicken Sie auf Verbinden, um Emma zu testen.</div>
+            </div>
+
+            <div class="voice-controls">
+              <button class="voice-btn voice-connect" id="voice-connect-btn" type="button">Verbinden</button>
+              <button class="voice-btn voice-disconnect" id="voice-disconnect-btn" type="button" disabled>Trennen</button>
+            </div>
+
+            <p class="voice-note">
+              Benötigt einen LiveKit-Token-Endpunkt unter <code>/api/livekit/token</code>. Der Secret-Key bleibt serverseitig.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="receptionist-workflow-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Ablauf</span>
+          <h2 class="section-title">Vom verpassten Anruf zum gebuchten Termin</h2>
+          <p class="section-desc">Emma ist nicht nur ein Anrufbeantworter. Sie fragt nach, sortiert ein und stößt den nächsten Schritt im CRM an.</p>
+        </div>
+
+        <div class="receptionist-workflow-grid">
+          <div class="workflow-card">
+            <span class="workflow-number">01</span>
+            <h3>Anruf wird angenommen</h3>
+            <p>Emma meldet sich freundlich, erkennt Anliegen und Dringlichkeit.</p>
+          </div>
+          <div class="workflow-card">
+            <span class="workflow-number">02</span>
+            <h3>Lead wird qualifiziert</h3>
+            <p>Name, Kontakt, Projektart und Wunschzeit werden strukturiert erfasst.</p>
+          </div>
+          <div class="workflow-card">
+            <span class="workflow-number">03</span>
+            <h3>CRM wird aktualisiert</h3>
+            <p>Ihr Team erhält den Kontext, ohne Gesprächsnotizen nachzutragen.</p>
+          </div>
+          <div class="workflow-card">
+            <span class="workflow-number">04</span>
+            <h3>Termin wird gesichert</h3>
+            <p>Der Interessent bekommt Bestätigung und Ihr Kalender bleibt sauber.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand-col">
+          <a href="./index.html" class="nav-logo footer-logo">
+            <img src="./alphaflowcrm_logo.png" alt="AlphaflowCRM" class="brand-logo-img">
+          </a>
+          <p class="footer-desc-text">
+            Versteckte Umsatzlücken aufdecken und täglich Umsatzverluste stoppen. Für inhabergeführte KMU, die ihr Wachstum automatisieren wollen.
+          </p>
+        </div>
+
+        <div class="footer-col footer-links-col">
+          <div class="footer-links-subgrid">
+            <div>
+              <h4 class="footer-title">Navigation</h4>
+              <ul class="footer-links">
+                <li><a href="./index.html#problem" class="footer-link-item">Das Problem</a></li>
+                <li><a href="./index.html#rechner" class="footer-link-item">Umsatz-Rechner</a></li>
+                <li><a href="./index.html#loesung" class="footer-link-item">Die 5 Säulen</a></li>
+                <li><a href="./ki-rezeptionist.html" class="footer-link-item">KI-Rezeptionist</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="footer-title">Rechtliches</h4>
+              <ul class="footer-links">
+                <li><a href="#" class="footer-link-item">Impressum</a></li>
+                <li><a href="#" class="footer-link-item">Datenschutz</a></li>
+                <li><a href="#" class="footer-link-item">AGB</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col footer-contact-col">
+          <h4 class="footer-title">Kontakt</h4>
+          <ul class="footer-contact-list">
+            <li><span class="contact-icon">📧</span><a href="mailto:kontakt@alphaflow.de" class="contact-link">kontakt@alphaflow.de</a></li>
+            <li><span class="contact-icon">📞</span><span>+49 (0) 000 000 000</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Alphaflow. Alle Rechte vorbehalten.</p>
+        <p>Hergestellt für den deutschen Mittelstand.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

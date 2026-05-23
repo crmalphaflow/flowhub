@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Alphaflow CRM | Interaktive Umsatzanalyse & KI-Wachstumssysteme</title>
+  <meta name="description" content="Entdecken Sie versteckte Umsatzlücken in Ihrem Unternehmen. Nutzen Sie unseren interaktiven Umsatz-Rechner und das 5-Säulen-Audit für KMU. 90 Tage Ergebnisgarantie.">
+  <meta name="keywords" content="Umsatzoptimierung, KMU, Automatisierung, CRM, Rufmanagement, KI Sprachassistent, Lead-Generierung">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Alphaflow | Versteckte Umsatzlücken aufdecken">
+  <meta property="og:description" content="Wir analysieren kostenlos, wie viel Umsatz Ihr Unternehmen täglich verliert und liefern den genauen Plan, um es zu stoppen.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-brand-bg text-white font-sans antialiased overflow-x-hidden">
+
+  <!-- Floating Navigation -->
+  <header class="navbar" id="main-nav">
+    <div class="container nav-container">
+      <!-- Logo -->
+      <a href="#" class="nav-logo">
+        <img src="./alphaflowcrm_logo.png" alt="AlphaflowCRM" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu">
+        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#rechner" class="nav-link">Umsatz-Rechner</a>
+        <a href="#loesung" class="nav-link">Die 5 Säulen</a>
+        <a href="./ki-rezeptionist.html" class="nav-link">KI-Rezeptionist</a>
+        <a href="#simulator" class="nav-link">KI-Simulator</a>
+        <a href="#about" class="nav-link">Wer wir sind</a>
+        <a href="#garantie" class="nav-link">Garantie</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="nav-actions">
+        <a href="#audit-quiz" class="btn btn-primary btn-sm js-audit-open">Gratis Audit starten →</a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="burger-menu" id="mobile-menu-btn" aria-label="Menü öffnen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+          <line x1="4" x2="20" y1="12" y2="12" class="menu-line-top"></line>
+          <line x1="4" x2="20" y1="6" y2="6" class="menu-line-mid"></line>
+          <line x1="4" x2="20" y1="18" y2="18" class="menu-line-bot"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobile-menu">
+      <a href="#problem" class="mobile-nav-link">Problem</a>
+      <a href="#rechner" class="mobile-nav-link">Umsatz-Rechner</a>
+      <a href="#loesung" class="mobile-nav-link">Die 5 Säulen</a>
+      <a href="./ki-rezeptionist.html" class="mobile-nav-link">KI-Rezeptionist</a>
+      <a href="#simulator" class="mobile-nav-link">KI-Simulator</a>
+      <a href="#about" class="mobile-nav-link">Wer wir sind</a>
+      <a href="#garantie" class="mobile-nav-link">Garantie</a>
+      <a href="#faq" class="mobile-nav-link">FAQ</a>
+      <a href="#audit-quiz" class="btn btn-primary btn-block js-audit-open">Gratis Audit starten →</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <!-- Glowing background elements -->
+    <div class="glow-orb glow-top-left"></div>
+    <div class="glow-orb glow-bottom-right"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Hero Text -->
+        <div class="hero-text-col">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-label">Neu: Interaktive Umsatzanalyse für KMU</span>
+          </div>
+
+          <h1 class="hero-title">
+            Wie viel Umsatz entgeht Ihnen jeden Tag <span class="gradient-text">ohne dass Sie es merken?</span>
+          </h1>
+
+          <p class="hero-desc">
+            Selbst etablierte Handwerks- und Dienstleistungsbetriebe verlieren täglich bares Geld durch <span class="white-highlight">unsichtbare Umsatzlücken</span> – ungenutzte Potenziale, die im Alltagsgeschäft untergehen.
+          </p>
+
+          <div class="hero-quote-block">
+            <p class="quote-text">
+              Nach der Analyse von Hunderten Unternehmen haben wir ein System entwickelt, das diese Lücken schließt. Diagnostizieren Sie Ihre Schwachstellen in weniger als 2 Minuten selbst.
+            </p>
+          </div>
+
+          <div class="hero-btn-group">
+            <a href="#rechner" class="btn btn-primary btn-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg>
+              Umsatz-Rechner starten
+            </a>
+            <a href="#audit-quiz" class="btn btn-secondary btn-lg js-audit-open">Muster-Audit ansehen</a>
+          </div>
+
+          <div class="hero-checkmarks">
+            <div class="checkmark-item"><span class="check">✓</span> 2 Minuten Zeitaufwand</div>
+            <div class="checkmark-item"><span class="check">✓</span> Personalisierte Ergebnisse</div>
+            <div class="checkmark-item"><span class="check">✓</span> 100% Kostenlos & Unverbindlich</div>
+          </div>
+        </div>
+
+        <!-- Hero Graphic (CRM Dashboard Mockup Image) -->
+        <div class="hero-graphic-col">
+          <div class="graphic-card-wrapper">
+            <div class="glow-backdrop"></div>
+            <div class="graphic-card">
+              <!-- Actual Generated Dashboard Mockup Image -->
+              <img src="./crm_dashboard_hero.png" alt="Alphaflow CRM Dashboard" class="dashboard-img">
+              
+              <!-- Floating Overlay Stats -->
+              <div class="floating-badge loss-badge">
+                <p class="badge-title">Ø TÄGLICHER VERLUST</p>
+                <p class="badge-value">-939 €</p>
+                <p class="badge-sub">pro KMU ohne CRM</p>
+              </div>
+
+              <div class="floating-badge roi-badge">
+                <p class="badge-title">Ø SCHNITT-ROI</p>
+                <p class="badge-value">+3.428%</p>
+                <p class="badge-sub">nach Integration</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section with Calculator -->
+  <section id="problem" class="problem-section">
+    <div class="container">
+      
+      <!-- Section Title -->
+      <div class="section-header">
+        <span class="section-badge">Das Problem: Unsichtbare Verluste</span>
+        <h2 class="section-title">Warum manche Betriebe mühelos wachsen, während Sie täglich kämpfen</h2>
+        <p class="section-desc">
+          Es liegt selten an Ihrem Angebot oder Ihrer Qualität. Der Unterschied ist das **System**. Ohne Automatisierung versickert Ihr Umsatz täglich in 5 großen Lücken.
+        </p>
+      </div>
+
+      <!-- Interactive Calculator -->
+      <div id="rechner" class="calculator-container">
+        <div class="calc-glow"></div>
+        <div class="calc-grid">
+          
+          <!-- Calculator Controls -->
+          <div class="calc-controls">
+            <div class="calc-header">
+              <span class="calc-badge">Kalkulator</span>
+              <h3 class="calc-title">Interaktiver Umsatz-Rechner</h3>
+              <p class="calc-subtitle">Tragen Sie Ihre Werte ein, um Ihren geschätzten täglichen Verlust zu ermitteln.</p>
+            </div>
+
+            <div class="calc-inputs-group">
+              <!-- Industry selector -->
+              <div class="input-field">
+                <label for="calc-industry" class="field-label">Ihre Branche</label>
+                <select id="calc-industry" class="calc-select">
+                  <option value="handwerk" data-loss-factor="1.2">Handwerksbetrieb (z.B. Bau, Sanitär, Elektro)</option>
+                  <option value="dienstleistung" data-loss-factor="1.0">Dienstleister (z.B. Beratung, Pflege, Agenturen)</option>
+                  <option value="einzelhandel" data-loss-factor="0.8">Einzelhandel & Shops</option>
+                  <option value="praxis" data-loss-factor="1.1">Arztpraxis, Therapie & Kosmetik</option>
+                  <option value="b2b" data-loss-factor="1.3">B2B & Vertriebsunternehmen</option>
+                </select>
+              </div>
+
+              <!-- Revenue slider -->
+              <div class="input-field">
+                <div class="field-header">
+                  <label for="calc-revenue" class="field-label">Monatsumsatz (€)</label>
+                  <span class="field-value" id="calc-revenue-val">50.000 €</span>
+                </div>
+                <input type="range" id="calc-revenue" min="10000" max="300000" step="5000" value="50000" class="calc-slider">
+                <div class="slider-limits">
+                  <span>10.000 €</span>
+                  <span>300.000 €+</span>
+                </div>
+              </div>
+
+              <!-- Contract value slider -->
+              <div class="input-field">
+                <div class="field-header">
+                  <label for="calc-customer-val" class="field-label">Wert pro Kunde / Auftrag (€)</label>
+                  <span class="field-value" id="calc-customer-val-display">1.500 €</span>
+                </div>
+                <input type="range" id="calc-customer-val" min="100" max="10000" step="100" value="1500" class="calc-slider">
+                <div class="slider-limits">
+                  <span>100 €</span>
+                  <span>10.000 €+</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-info-box">
+              <p class="info-title">Warum diese Berechnung?</p>
+              <p class="info-desc">
+                Die Kalkulation basiert auf Durchschnittswerten hunderter KMU. Im Handwerk und Dienstleistungssektor gehen im Schnitt 15-20% der Anfragen verloren, da strukturierte Nachverfolgungen fehlen.
+              </p>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="calc-divider"></div>
+
+          <!-- Calculator Results -->
+          <div class="calc-results">
+            <div class="calc-header">
+              <span class="calc-badge">Auswertung</span>
+              <h4 class="calc-title">Ihr geschätztes Verlustpotenzial</h4>
+            </div>
+
+            <!-- Big Metrics -->
+            <div class="calc-metrics-grid">
+              <div class="metric-card metric-red">
+                <div class="metric-glow"></div>
+                <p class="metric-title">Umsatzverlust / Tag</p>
+                <p class="metric-value" id="calc-loss-day">-939 €</p>
+                <p class="metric-sub">Ihr tägliches Leck</p>
+              </div>
+
+              <div class="metric-card metric-orange">
+                <div class="metric-glow"></div>
+                <p class="metric-title">Umsatzverlust / Jahr</p>
+                <p class="metric-value" id="calc-loss-year">-342.800 €</p>
+                <p class="metric-sub">Jahrespotenzial</p>
+              </div>
+            </div>
+
+            <!-- Breakdown list -->
+            <div class="calc-breakdown-wrapper">
+              <p class="breakdown-title">Verteilung nach den 5 Umsatz-Säulen:</p>
+              
+              <div class="breakdown-list">
+                <div class="breakdown-item">
+                  <div class="breakdown-item-info">
+                    <span class="item-name">1. Reaktivierung alter Kunden (63%)</span>
+                    <span class="item-value" id="calc-break-react">216.000 €</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="calc-bar-react" style="width: 63%"></div>
+                  </div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-item-info">
+                    <span class="item-name">2. Reputations-Management (17%)</span>
+                    <span class="item-value" id="calc-break-review">58.800 €</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="calc-bar-review" style="width: 17%"></div>
+                  </div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-item-info">
+                    <span class="item-name">3. Verpasste Anrufe (9%)</span>
+                    <span class="item-value" id="calc-break-calls">29.400 €</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="calc-bar-calls" style="width: 9%"></div>
+                  </div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-item-info">
+                    <span class="item-name">4. Lead-Chatverluste (9%)</span>
+                    <span class="item-value" id="calc-break-chats">29.400 €</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="calc-bar-chats" style="width: 9%"></div>
+                  </div>
+                </div>
+
+                <div class="breakdown-item">
+                  <div class="breakdown-item-info">
+                    <span class="item-name">5. Website Conversion (6%)</span>
+                    <span class="item-value" id="calc-break-web">20.000 €</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="calc-bar-web" style="width: 6%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA in Calculator -->
+            <div class="calc-cta-footer">
+              <p class="cta-footer-text">Möchten Sie diese Lücken systematisch schließen? Machen Sie das Quick-Audit für eine detaillierte Diagnose.</p>
+              <a href="#audit-quiz" class="btn btn-primary btn-md js-audit-open">Zum Quick-Audit →</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- The 5 Root Problems Cards -->
+      <div class="problems-cards-wrapper">
+        <div class="problems-header">
+          <h3 class="problems-title">Die 5 größten Umsatzfresser in Ihrem Tagesgeschäft</h3>
+          <p class="problems-desc">Ohne ein strukturiertes CRM- und Automatisierungssystem verlieren Sie an folgenden 5 Stellen jeden Monat Kunden.</p>
+        </div>
+
+        <div class="problems-grid">
+          <!-- Pillar 1 Card -->
+          <div class="problem-card">
+            <div class="card-icon icon-red">📞</div>
+            <h4 class="card-title">1. Verpasste Anrufe</h4>
+            <p class="card-text">
+              Jeder nicht angenommene Anruf im Alltagsstress ist ein Kunde, den Sie direkt an die Konkurrenz verlieren. **85 %** der Anrufer versuchen es kein zweites Mal, sondern klicken auf den nächsten Eintrag.
+            </p>
+          </div>
+
+          <!-- Pillar 2 Card -->
+          <div class="problem-card">
+            <div class="card-icon icon-red">⭐</div>
+            <h4 class="card-title">2. Fehlende Online-Bewertungen</h4>
+            <p class="card-text">
+              Einige wenige unzufriedene Kunden geben schnell negative Sterne ab. Wenn Sie kein System haben, das Ihre zufriedenen Kunden *automatisch* um Feedback bittet, hinken Sie im lokalen Ranking hinterher.
+            </p>
+          </div>
+
+          <!-- Pillar 3 Card -->
+          <div class="problem-card">
+            <div class="card-icon icon-red">📁</div>
+            <h4 class="card-title">3. Die "Tote" Kundendatenbank</h4>
+            <p class="card-text">
+              Hunderte ehemalige Auftraggeber schlummern in Ihren Rechnungsordnern. Weil Sie keine Zeit für manuelle Nachverfolgungen haben, verpassen Sie die einfachsten Zusatz- und Nachfolgeaufträge.
+            </p>
+          </div>
+
+          <!-- Pillar 4 Card -->
+          <div class="problem-card">
+            <div class="card-icon icon-red">💬</div>
+            <h4 class="card-title">4. Chaos im Posteingang</h4>
+            <p class="card-text">
+              WhatsApp, Instagram, Mail: Kunden schreiben überall. Weil die Kanäle getrennt sind und eine zentrale Inbox fehlt, gehen Anfragen im wöchentlichen Eifer unter.
+            </p>
+          </div>
+
+          <!-- Pillar 5 Card -->
+          <div class="problem-card">
+            <div class="card-icon icon-red">🌐</div>
+            <h4 class="card-title">5. Die rein informative Homepage</h4>
+            <p class="card-text">
+              Besucher kommen auf Ihre Webseite, lesen Ihre Leistungen und gehen wieder. Ohne einfache interaktive Werkzeuge oder automatische Rückrufe liegt Ihre Conversion-Rate unter **3 %**.
+            </p>
+          </div>
+
+          <!-- Summary Box -->
+          <div class="problem-card summary-card">
+            <div class="summary-card-glow"></div>
+            <span class="card-badge">Zusammenfassung</span>
+            <h4 class="card-title">Die Summe des Verlusts</h4>
+            <p class="card-text">
+              Rechnet man all diese Lücken zusammen, verliert ein Durchschnitts-KMU ca. **28.567 € monatlich**. Das ist bares Geld, das an Konkurrenten mit besseren Prozessen geht.
+            </p>
+            <div class="card-footer">*Berechnet auf Basis von 127+ analysierten Betrieben.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Solutions Section (The 5 Pillars) -->
+  <section id="loesung" class="solutions-section">
+    <div class="glow-orb glow-middle-right"></div>
+    <div class="container">
+      
+      <!-- Section Title -->
+      <div class="section-header">
+        <span class="section-badge">Die Lösung: Alphaflow CRM</span>
+        <h2 class="section-title">Das 5-Säulen-Wachstumssystem</h2>
+        <p class="section-desc">
+          Ein automatisiertes Ökosystem, das Ihre Umsatzlücken schließt. Vollständig für Sie eingerichtet, damit Sie sich wieder auf Ihr Kerngeschäft konzentrieren können.
+        </p>
+      </div>
+
+      <!-- Solutions Grid -->
+      <div class="solutions-grid">
+        
+        <!-- Säule 1 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <span class="solution-badge">Säule 01</span>
+            <span class="solution-icon">📁</span>
+          </div>
+          <h3 class="solution-title">Datenbank-Reaktivierung</h3>
+          <p class="solution-subtitle">Automatisierte E-Mail & SMS Kampagnen</p>
+          <p class="solution-desc-text">
+            Wir füttern das CRM mit Ihrer ungenutzten Kundendatenbank und starten personalisierte Reaktivierungs-Kampagnen. Bestandskunden kaufen erwiesenermaßen 5-mal häufiger und kostengünstiger als Neukunden.
+          </p>
+          <div class="solution-footer">
+            <span class="footer-label">Jahrespotenzial</span>
+            <span class="footer-value">+216.000 €</span>
+          </div>
+        </div>
+
+        <!-- Säule 2 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <span class="solution-badge">Säule 02</span>
+            <span class="solution-icon">⭐</span>
+          </div>
+          <h3 class="solution-title">Automatisches Rufmanagement</h3>
+          <p class="solution-subtitle">Sterne-Gewinnung & KI-Antworten</p>
+          <p class="solution-desc-text">
+            Nach jedem abgeschlossenen Auftrag bittet das System Ihre Kunden per Textnachricht um eine Bewertung. Unsere KI antwortet passend auf jedes Feedback. Ihr Google-Ranking steigt rasant.
+          </p>
+          <div class="solution-footer">
+            <span class="footer-label">Jahrespotenzial</span>
+            <span class="footer-value">+58.800 €</span>
+          </div>
+        </div>
+
+        <!-- Säule 3 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <span class="solution-badge">Säule 03</span>
+            <span class="solution-icon">📞</span>
+          </div>
+          <h3 class="solution-title">24/7 KI-Sprachassistent</h3>
+          <p class="solution-subtitle">Kein verpasster Anruf mehr</p>
+          <p class="solution-desc-text">
+            Unser KI-Rezeptionist geht ans Telefon, wenn Sie auf der Baustelle oder im Kundentermin sind. Die KI beantwortet häufige Fragen, qualifiziert Anrufer und bucht direkt Termine in Ihrem Kalender.
+          </p>
+          <div class="solution-footer">
+            <span class="footer-label">Jahrespotenzial</span>
+            <span class="footer-value">+29.400 €</span>
+          </div>
+        </div>
+
+        <!-- Säule 4 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <span class="solution-badge">Säule 04</span>
+            <span class="solution-icon">💬</span>
+          </div>
+          <h3 class="solution-title">Omnichannel-KI-Chat</h3>
+          <p class="solution-subtitle">Alles in einer intelligenten Inbox</p>
+          <p class="solution-desc-text">
+            Egal ob WhatsApp-Nachricht, Instagram, SMS oder E-Mail – alle Chats laufen in einer einzigen Inbox zusammen. Unsere integrierte Chat-KI antwortet innerhalb von Sekunden und bindet die Leads direkt an Sie.
+          </p>
+          <div class="solution-footer">
+            <span class="footer-label">Jahrespotenzial</span>
+            <span class="footer-value">+29.400 €</span>
+          </div>
+        </div>
+
+        <!-- Säule 5 -->
+        <div class="solution-card">
+          <div class="solution-header">
+            <span class="solution-badge">Säule 05</span>
+            <span class="solution-icon">🌐</span>
+          </div>
+          <h3 class="solution-title">KI-optimierte Smart Website</h3>
+          <p class="solution-subtitle">Conversion-Optimierung & Follow-Up</p>
+          <p class="solution-desc-text">
+            Wir verwandeln Ihre passive Webseite in einen automatischen Lead-Sammler. Mit intelligenten Webformularen und interaktiven Rechnern heben wir die Conversion-Rate auf über 5 % an.
+          </p>
+          <div class="solution-footer">
+            <span class="footer-label">Jahrespotenzial</span>
+            <span class="footer-value">+20.000 €</span>
+          </div>
+        </div>
+
+        <!-- Potentials Summary Box -->
+        <div class="totals-summary-card">
+          <div class="card-decor-icon">🚀</div>
+          <div class="totals-content">
+            <span class="totals-badge">Mittelstands-Power</span>
+            <h3 class="totals-title">Gesamtes Potenzial für Ihren Betrieb</h3>
+            <p class="totals-desc">Das Ineinandergreifen aller 5 Säulen bewirkt ein sich selbst verstärkendes Wachstum. Mehr Bewertungen bringen Traffic, der Sprachassistent konvertiert, die Kampagne reaktiviert.</p>
+          </div>
+          <div class="totals-stats-grid">
+            <div class="totals-stat-col">
+              <p class="stat-label">Mehrumsatz / Jahr</p>
+              <p class="stat-value">+342.800 €</p>
+            </div>
+            <div class="totals-stat-col">
+              <p class="stat-label">Schnitt-ROI</p>
+              <p class="stat-value">3.428%</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Live Simulator Section -->
+  <section id="simulator" class="simulator-section">
+    <div class="glow-orb glow-bottom-left-2"></div>
+    <div class="container">
+      
+      <div class="simulator-grid">
+        <!-- Simulator Controls -->
+        <div class="simulator-controls-col">
+          <span class="section-badge">Live-Demonstration</span>
+          <h2 class="section-title">Erleben Sie das System in Aktion</h2>
+          <p class="section-desc">
+            Wie läuft das eigentlich ab, wenn ein Kunde anruft oder schreibt? Testen Sie unsere Live-Simulation. Klicken Sie auf ein Szenario unten, um den automatisierten Ablauf im Mockup-Handy zu starten.
+          </p>
+
+          <div class="simulator-image-card">
+            <img src="./live_demo_jarvis.png" alt="KI-Automatisierung im Handwerksbetrieb" class="simulator-demo-img">
+            <div class="simulator-image-overlay">
+              <span class="demo-kpi-label">Live-System</span>
+              <strong>24/7 Lead-Erfassung</strong>
+              <small>Anruf erkannt, Anfrage gespeichert, Termin bestätigt.</small>
+            </div>
+          </div>
+
+          <!-- Scenario triggers -->
+          <div class="scenarios-list" id="simulator-controls">
+            <button class="scenario-btn active simulator-btn" data-scenario="calls">
+              <span class="scenario-icon-box">📞</span>
+              <div class="scenario-btn-text">
+                <h4 class="scenario-btn-title">Szenario: Verpasster Anruf & Callback</h4>
+                <p class="scenario-btn-desc">Wie der KI-Sprachassistent Sekunden nach einem verpassten Anruf reagiert.</p>
+              </div>
+            </button>
+
+            <button class="scenario-btn simulator-btn" data-scenario="whatsapp">
+              <span class="scenario-icon-box">💬</span>
+              <div class="scenario-btn-text">
+                <h4 class="scenario-btn-title">Szenario: WhatsApp-Anfrage am Wochenende</h4>
+                <p class="scenario-btn-desc">Automatisierte Qualifizierung und Terminbuchung über Messenger.</p>
+              </div>
+            </button>
+
+            <button class="scenario-btn simulator-btn" data-scenario="review">
+              <span class="scenario-icon-box">⭐</span>
+              <div class="scenario-btn-text">
+                <h4 class="scenario-btn-title">Szenario: Bewertungsgewinnung</h4>
+                <p class="scenario-btn-desc">Wie wir automatisch 5 Sterne einholen, nachdem ein Auftrag fertiggestellt wurde.</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="simulator-phone-col">
+          <div class="phone-mockup">
+            <!-- Speaker/Camera Notch -->
+            <div class="phone-notch">
+              <div class="notch-speaker"></div>
+            </div>
+
+            <!-- Phone Screen Area -->
+            <div class="phone-screen">
+              <!-- Screen Header (Mockup WhatsApp/Chat UI) -->
+              <div class="phone-header">
+                <div class="phone-avatar-col">
+                  <div class="phone-avatar">AI</div>
+                  <span class="avatar-status-dot"></span>
+                </div>
+                <div class="phone-header-text">
+                  <h4 class="phone-chat-partner" id="phone-chat-partner">Alphaflow Assist</h4>
+                  <p class="phone-status-label">aktiv & schreibend...</p>
+                </div>
+              </div>
+
+              <!-- Chat messages container -->
+              <div class="phone-messages" id="phone-chat-messages">
+                <!-- Messages will be dynamically rendered here by main.js -->
+              </div>
+
+              <!-- Input Area Mockup -->
+              <div class="phone-input-bar">
+                <div class="mock-input-text">Antwort simulieren...</div>
+                <div class="phone-send-btn">➤</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Quick-Audit Quiz Section -->
+  <section id="audit-quiz" class="quiz-section audit-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title">
+    <div class="audit-modal-backdrop" data-audit-close></div>
+    <div class="glow-orb glow-center-blur"></div>
+    <div class="container">
+      
+      <div class="quiz-card">
+        <button class="audit-close-btn" type="button" aria-label="Audit schließen" data-audit-close>×</button>
+        
+        <!-- Welcome Screen -->
+        <div id="quiz-welcome" class="quiz-screen-content welcome-screen">
+          <span class="section-badge">Diagnostik</span>
+          <h2 class="quiz-title" id="audit-modal-title">Kostenloses KI-Audit</h2>
+          <p class="quiz-desc">
+            Beantworten Sie 5 Kernfragen und tragen Sie Ihre Praxiszahlen ein. Das Audit berechnet Ihren Business-Health-Score und schätzt, wo aktuell Umsatz liegen bleibt.
+          </p>
+
+          <div class="audit-input-grid">
+            <div class="audit-field">
+              <label for="audit-monthly-revenue">Monatsumsatz</label>
+              <input type="number" id="audit-monthly-revenue" min="10000" step="1000" value="100000">
+            </div>
+            <div class="audit-field">
+              <label for="audit-average-sale">Ø Auftragswert</label>
+              <input type="number" id="audit-average-sale" min="100" step="50" value="800">
+            </div>
+            <div class="audit-field">
+              <label for="audit-past-customers">Altkunden-Datenbank</label>
+              <input type="number" id="audit-past-customers" min="0" step="50" value="1000">
+            </div>
+            <div class="audit-field">
+              <label for="audit-missed-calls">Verpasste Anrufe / Monat</label>
+              <input type="number" id="audit-missed-calls" min="0" step="1" value="20">
+            </div>
+            <div class="audit-field">
+              <label for="audit-monthly-leads">Leads / Monat</label>
+              <input type="number" id="audit-monthly-leads" min="0" step="1" value="80">
+            </div>
+            <div class="audit-field">
+              <label for="audit-website-visitors">Website-Besucher / Monat</label>
+              <input type="number" id="audit-website-visitors" min="0" step="50" value="1000">
+            </div>
+            <div class="audit-field">
+              <label for="audit-conversion-rate">Aktuelle Website-Conversion</label>
+              <input type="number" id="audit-conversion-rate" min="0" max="20" step="0.1" value="2.8">
+            </div>
+            <div class="audit-field">
+              <label for="audit-star-rating">Google-Bewertung</label>
+              <input type="number" id="audit-star-rating" min="1" max="5" step="0.1" value="4.1">
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button id="quiz-start-btn" class="btn btn-primary btn-lg">Audit starten (ca. 60 Sek.) →</button>
+          </div>
+
+          <div class="quiz-meta-info">
+            <span>🔒 Daten bleiben 100% vertraulich</span>
+            <span>✓ Direktes Online-Ergebnis</span>
+          </div>
+        </div>
+
+        <!-- Question Screen (Hidden by default) -->
+        <div id="quiz-question-container" class="quiz-screen-content question-screen hidden">
+          <!-- Progress bar -->
+          <div class="quiz-progress-wrapper">
+            <div class="progress-labels">
+              <span id="quiz-progress-text">Frage 1 von 5</span>
+              <span id="quiz-percent">20% abgeschlossen</span>
+            </div>
+            <div class="progress-bar-track">
+              <div id="quiz-progress-bar" class="progress-bar-fill" style="width: 20%"></div>
+            </div>
+          </div>
+
+          <!-- Question content -->
+          <div class="quiz-question-block">
+            <span class="quiz-pillar-badge" id="quiz-q-pillar">Säule 01: Erreichbarkeit</span>
+            <h3 class="quiz-question-text" id="quiz-question-text">
+              Was passiert, wenn ein potenzieller Kunde Sie während eines Auftrags oder nach Feierabend anruft?
+            </h3>
+          </div>
+
+          <!-- Answer buttons -->
+          <div class="quiz-options-list" id="quiz-options">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Result Screen (Hidden by default) -->
+        <div id="quiz-result" class="quiz-screen-content result-screen hidden">
+          <span class="section-badge">Auswertung fertig</span>
+          <h2 class="quiz-title">Ihr Umsatz-Gesundheitswert</h2>
+          
+          <!-- Score Dashboard -->
+          <div class="quiz-score-dashboard">
+            <div class="score-radial-wrapper">
+              <!-- Circular Progress SVG -->
+              <svg class="score-radial-svg">
+                <defs>
+                  <linearGradient id="orange-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fb923c"/>
+                    <stop offset="100%" stop-color="#ea580c"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="72" cy="72" r="62" class="circle-bg"/>
+                <circle cx="72" cy="72" r="62" id="quiz-circle-progress" class="circle-fill"/>
+              </svg>
+              <div class="score-inner-text">
+                <span class="score-number" id="quiz-score-val">0</span>
+                <span class="score-max">von 500</span>
+              </div>
+            </div>
+            
+            <p class="score-tier-label" id="quiz-score-tier">Befund: Verbesserungswürdig</p>
+            <p class="score-tier-desc" id="quiz-score-desc">
+              Ihr Betrieb hat solide Grundlagen, verliert aber täglich bares Geld durch unzureichende Lead-Nachverfolgung und verpasste Callbacks.
+            </p>
+          </div>
+
+          <div class="audit-impact-grid">
+            <div class="audit-impact-card audit-impact-main">
+              <span class="impact-label">Geschätztes Potenzial / Jahr</span>
+              <strong id="audit-total-potential">0 €</strong>
+              <small>Basierend auf Ihren Angaben und den Audit-Formeln.</small>
+            </div>
+            <div class="audit-impact-card">
+              <span class="impact-label">Priorität</span>
+              <strong id="audit-priority-window">30 Tage</strong>
+              <small id="audit-priority-desc">Schnellste Hebel zuerst schließen.</small>
+            </div>
+          </div>
+
+          <div class="audit-breakdown-card">
+            <h4 class="weakness-card-title">Potenzial nach Säulen:</h4>
+            <div id="audit-breakdown-list" class="audit-breakdown-list"></div>
+          </div>
+
+          <div class="audit-visual-board">
+            <div class="audit-chart-card">
+              <div class="audit-card-heading">
+                <span class="impact-label">Umsatzleck-Karte</span>
+                <strong>Priorisierte Hebel</strong>
+              </div>
+              <div id="audit-bars" class="audit-bars"></div>
+            </div>
+            <div class="audit-next-card">
+              <div class="audit-card-heading">
+                <span class="impact-label">Empfohlene Reihenfolge</span>
+                <strong>90-Tage-Fahrplan</strong>
+              </div>
+              <div id="audit-recommendations" class="audit-recommendations"></div>
+            </div>
+          </div>
+
+          <!-- Highlight of Weakness -->
+          <div class="quiz-weakness-card">
+            <h4 class="weakness-card-title">Größtes Einsparpotenzial:</h4>
+            <div class="weakness-card-body">
+              <span class="weakness-icon" id="quiz-weak-icon">📞</span>
+              <div class="weakness-text-col">
+                <h5 class="weakness-title" id="quiz-weak-title">Säule 01: Verpasste Anrufe</h5>
+                <p class="weakness-desc" id="quiz-weak-desc">
+                  Hier entgehen Ihnen die meisten Kunden. Der Einsatz eines simplen KI-Sprachassistenten oder ein sofortiger SMS-Rückruf-Automat könnte Ihren Umsatz monatlich spürbar steigern.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA to unlock full report -->
+          <div class="quiz-result-footer">
+            <div class="result-notice-box">
+              🔒 <strong>Vollständiges Audit sichern:</strong> In einem kurzen 15-minütigen Gespräch gehen wir Ihre Antworten im Detail durch und geben Ihnen einen kostenfreien, individuellen Umsetzungsplan.
+            </div>
+
+            <form class="audit-result-form" id="audit-result-form">
+              <div class="audit-form-header">
+                <span class="impact-label">Umsatzlücken beheben lassen</span>
+                <h3>Ihre kostenlose Auswertung anfordern</h3>
+              </div>
+              <div class="audit-result-form-grid">
+                <div class="form-group">
+                  <label for="audit-result-name" class="form-label">Ihr Name</label>
+                  <input type="text" id="audit-result-name" required placeholder="z.B. Thomas Müller" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="audit-result-company" class="form-label">Firma</label>
+                  <input type="text" id="audit-result-company" required placeholder="z.B. Müller GmbH" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="audit-result-email" class="form-label">E-Mail</label>
+                  <input type="email" id="audit-result-email" required placeholder="name@firma.de" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="audit-result-phone" class="form-label">Telefon</label>
+                  <input type="tel" id="audit-result-phone" required placeholder="0170 1234567" class="form-input">
+                </div>
+              </div>
+              <input type="hidden" id="audit-result-summary">
+              <div class="form-checkbox-group">
+                <input type="checkbox" id="audit-result-privacy" required class="form-checkbox">
+                <label for="audit-result-privacy" class="form-checkbox-label">
+                  Ich möchte kontaktiert werden, damit Alphaflow meine Umsatzlücken prüfen und einen Umsetzungsplan erstellen kann.
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Umsatzlücken beheben lassen →</button>
+            </form>
+            
+            <div class="result-actions">
+              <a href="#kontakt-form" id="quiz-book-btn" class="btn btn-primary btn-lg">Audit-Gespräch buchen (Kostenlos)</a>
+              <button id="quiz-restart-action" class="btn btn-secondary btn-lg">Test wiederholen</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Human Brand / About Section -->
+  <section id="about" class="about-section">
+    <div class="glow-orb glow-about"></div>
+    <div class="container">
+      
+      <div class="about-grid">
+        <!-- Story / Brand content -->
+        <div class="about-text-col">
+          <span class="section-badge">Wer wir sind</span>
+          <h2 class="section-title">Wir bringen High-End Automatisierung zum regionalen Mittelstand</h2>
+          <p class="section-desc leading-relaxed">
+            Große Konzerne verfügen über riesige IT-Abteilungen und hochkomplexe Systeme, um jeden Kundenkontakt zu optimieren. Warum sollte das dem lokalen Handwerk oder mittelständischen Dienstleister vorenthalten bleiben?
+          </p>
+          <div class="about-story-paragraphs">
+            <p>
+              Alphaflow entstand aus einer einfachen Feststellung: Die meisten KMUs liefern eine hervorragende Arbeit vor Ort ab. Aber sie verlieren Kunden an Mitbewerber mit schlechterer Qualität, die schlichtweg bessere digitale Prozesse und eine schnellere Erreichbarkeit besitzen.
+            </p>
+            <p>
+              Wir glauben, dass Digitalisierung nicht kompliziert sein darf. Deshalb programmieren wir keine unübersichtlichen Monster-Systeme, sondern richten Ihnen ein **schlüsselfertiges Wachstums-Ökosystem** ein. Wir sind kein anonymer Software-Konzern, sondern Ihr Partner auf Augenhöhe.
+            </p>
+          </div>
+
+          <!-- Value props -->
+          <div class="about-props-grid">
+            <div class="prop-item">
+              <span class="prop-icon">💡</span>
+              <div class="prop-text">
+                <h4 class="prop-title">Auf Augenhöhe</h4>
+                <p class="prop-desc">Kein Fachchinesisch. Wir sprechen Ihre Sprache und verstehen Ihren Betriebsalltag.</p>
+              </div>
+            </div>
+            <div class="prop-item">
+              <span class="prop-icon">🛠️</span>
+              <div class="prop-text">
+                <h4 class="prop-title">Schlüsselfertig</h4>
+                <p class="prop-desc">Wir übernehmen das gesamte Setup, die Migration Ihrer Daten und die Schulung Ihrer Mitarbeiter.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founders Photo / Philosophy Card -->
+        <div class="about-photo-col">
+          <div class="philosophy-card-wrapper">
+            <div class="glow-backdrop"></div>
+            <div class="philosophy-card">
+              <!-- Actual Generated Founders Photo Image -->
+              <img src="./founders_photo.png" alt="Alphaflow Team" class="founders-img">
+              
+              <div class="philosophy-content">
+                <div class="philosophy-header">
+                  <h4 class="philosophy-title">Unsere Philosophie</h4>
+                  <p class="philosophy-subtitle">Erfolg durch Einfachheit</p>
+                </div>
+
+                <p class="philosophy-quote">
+                  „Wir messen uns nicht an der Anzahl der Zeilen Code, sondern an den Euro-Zahlen, die unsere Kunden am Monatsende zusätzlich auf dem Konto verbuchen können.“
+                </p>
+
+                <div class="philosophy-footer">
+                  <p class="signature-name">Das Alphaflow Team</p>
+                  <p class="signature-title">Automation & CRM Experten für KMU</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      
+      <!-- Section Title -->
+      <div class="section-header">
+        <span class="section-badge">Echte Erfolge</span>
+        <h2 class="section-title">Das sagen andere KMUs nach dem Audit</h2>
+        <p class="section-desc">
+          Erfahren Sie, wie inhabergeführte Betriebe ihre Prozesse digitalisiert und messbare Umsatzsprünge erzielt haben.
+        </p>
+      </div>
+
+      <!-- Testimonial Grid -->
+      <div class="testimonials-grid">
+        
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-body">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="quote-text">
+              „Das Audit hat uns die Augen geöffnet. Wir haben täglich fast 800 € verloren – allein weil wir auf der Baustelle keine Anrufe annehmen konnten. Nach 90 Tagen verzeichnen wir 28% mehr Umsatz.“
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="author-info">
+              <h4 class="author-name">Thomas K.</h4>
+              <p class="author-meta">Geschäftsführer · Dachdeckerbetrieb · 23 Mitarbeiter</p>
+            </div>
+            <div class="result-tag">
+              <span class="tag-label">Ergebnis</span>
+              <span class="tag-val">+28% Umsatz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-body">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="quote-text">
+              „Endlich wussten wir, an welchen drei Lücken wir ansetzen müssen. Keine teure Berater-Prosa, sondern glasklare Aufgaben. Die Implementierung war in einer Woche fertig. Besonders die Bewertung hat uns geholfen.“
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="author-info">
+              <h4 class="author-name">Sandra M.</h4>
+              <p class="author-meta">Inhaberin · Facheinzelhandel · 8 Mitarbeiter</p>
+            </div>
+            <div class="result-tag">
+              <span class="tag-label">Ergebnis</span>
+              <span class="tag-val">3 Lücken zu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-body">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="quote-text">
+              „Ich war zuerst skeptisch, ob so viel Automatisierung unpersönlich wirkt. Aber das Gegenteil ist der Fall: Die Kunden freuen sich über schnelle Antworten auf WhatsApp. Unsere Antwortzeit liegt jetzt unter 5 Minuten.“
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="author-info">
+              <h4 class="author-name">Maria L.</h4>
+              <p class="author-meta">Praxisleitung · Kosmetik &amp; Therapie · 15 Mitarbeiter</p>
+            </div>
+            <div class="result-tag">
+              <span class="tag-label">Ergebnis</span>
+              <span class="tag-val">Antwort &lt; 5m</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card">
+          <div class="testimonial-body">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="quote-text">
+              „Die Zahlen sprachen einfach für sich. Ein identifiziertes Jahrespotenzial von über 342.000 € hat uns überzeugt. Die Einrichtung lief unbemerkt im Hintergrund. Absolute Empfehlung.“
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="author-info">
+              <h4 class="author-name">Michael B.</h4>
+              <p class="author-meta">Geschäftsführer · Sanitär- &amp; Heizungstechnik · 31 Mitarbeiter</p>
+            </div>
+            <div class="result-tag">
+              <span class="tag-label">Ergebnis</span>
+              <span class="tag-val">Voller Kalender</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Guarantee Section -->
+  <section id="garantie" class="guarantee-section">
+    <div class="glow-orb glow-guarantee"></div>
+    <div class="container">
+      
+      <!-- Section Title -->
+      <div class="section-header">
+        <span class="section-badge">Null Risiko</span>
+        <h2 class="section-title">90-Tage-Ergebnisgarantie</h2>
+        <p class="section-desc">
+          Wir stehen für messbare Resultate. Wenn wir Ihre gesteckten Ziele nicht erreichen, arbeiten wir so lange kostenlos weiter, bis wir es tun.
+        </p>
+      </div>
+
+      <!-- Roadmap Timeline -->
+      <div class="timeline-grid">
+        
+        <!-- Step 1 -->
+        <div class="timeline-step">
+          <span class="step-number">01</span>
+          <div class="step-content">
+            <span class="step-badge">Tag 1–30</span>
+            <h3 class="step-title">System-Setup & Erste Resultate</h3>
+            <p class="step-desc">
+              Wir migrieren Ihre bestehenden Kundendaten in das neue CRM, richten den KI-Rezeptionisten ein und starten die ersten SMS/E-Mail-Reaktivierungen. Ihre Erreichbarkeit steigt sofort auf über 95 %.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step">
+          <span class="step-number">02</span>
+          <div class="step-content">
+            <span class="step-badge">Tag 31–60</span>
+            <h3 class="step-title">Wachstums-Automatisierung</h3>
+            <p class="step-desc">
+              Wir aktivieren das Reputations-Management zur automatischen Generierung von Google-Sternen. Die Omnichannel-Inbox wird verknüpft. Sie erhalten die ersten Zusatzaufträge aus der Datenbank.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step">
+          <span class="step-number">03</span>
+          <div class="step-content">
+            <span class="step-badge">Tag 61–90</span>
+            <h3 class="step-title">ROI-Nachweis & Optimierung</h3>
+            <p class="step-desc">
+              Wir verfeinern die Konversationen der KI, optimieren die Conversion-Elemente der Webseite und weisen den ROI Ihrer Investition schwarz auf weiß in Ihrem Dashboard nach.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Guarantee callout -->
+      <div class="guarantee-callout">
+        <span class="callout-icon">📜</span>
+        <h3 class="callout-title">Unsere Garantie, schwarz auf weiß</h3>
+        <p class="callout-desc">
+          Sollten Sie nach 90 Tagen nicht mindestens das **3-Fache** Ihrer Investition durch das System wieder eingespielt haben, arbeiten wir **kostenfrei weiter**, bis dieses Ziel erreicht ist. Kein Kleingedrucktes.
+        </p>
+        <div class="callout-bullets">
+          <span>✓ Schriftlich im Vertrag</span>
+          <span>✓ Messbar im Dashboard</span>
+          <span>✓ Voller Support inklusive</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      
+      <!-- Section Title -->
+      <div class="section-header">
+        <span class="section-badge">Fragen & Antworten</span>
+        <h2 class="section-title">Häufig gestellte Fragen</h2>
+        <p class="section-desc">Ehrliche Antworten auf die wichtigsten Fragen. Ohne Sales-Floskeln.</p>
+      </div>
+
+      <!-- Accordion Grid -->
+      <div class="faq-accordion" id="faq-accordion">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Was kostet das Umsatz-Audit genau?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Das Audit ist zu 100% kostenlos und unverbindlich. Es dient dazu, Ihnen die Potenziale in Ihrem Betrieb schwarz auf weiß aufzuzeigen. Danach entscheiden Sie frei, ob Sie die Umsetzung selbst in die Hand nehmen oder mit uns zusammenarbeiten möchten.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Wie viel Zeit muss ich selbst investieren?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Sehr wenig. Wir wissen, dass Sie als Geschäftsführer voll im Tagesgeschäft stecken. Für die Einrichtung benötigen wir lediglich ca. 2x 30 Minuten Ihrer Zeit für Absprachen und Datenfreigaben. Den kompletten Rest (Setup, Design, KI-Konfiguration) übernehmen wir.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Für welche Betriebe ist Alphaflow geeignet?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Besonders geeignet sind inhabergeführte KMUs mit 5 bis 50 Mitarbeitern aus den Bereichen Handwerk, lokale Dienstleistungen (z.B. Pflegedienste, Werkstätten) und Praxen. Überall dort, wo täglich Kunden anrufen und Termine koordiniert werden müssen.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Brauche ich technisches Vorwissen?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Nein, überhaupt nicht. Das System ist so konzipiert, dass es vollautomatisch im Hintergrund läuft. Für die tägliche Nutzung (z.B. Beantwortung von Nachrichten) erhalten Sie eine extrem einfache Handy-App, die sich wie WhatsApp bedienen lässt.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Was kostet das komplette System nach dem Audit?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Die Kosten richten sich nach dem Umfang der eingerichteten Säulen. Da wir eine 3-fach ROI-Garantie geben, amortisieren sich die Einrichtungsgebühren meistens in den ersten 12 bis 14 Tagen durch die erste Datenbank-Reaktivierung. Genaue Preise erhalten Sie maßgeschneidert im Auditbericht.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA / Contact Section -->
+  <section id="kontakt-form" class="contact-section">
+    <div class="glow-orb glow-contact"></div>
+    <div class="container">
+      
+      <div class="contact-grid">
+        <!-- Contact copy -->
+        <div class="contact-info-col">
+          <span class="section-badge">Nächster Schritt</span>
+          <h2 class="section-title">Lassen Sie uns Ihre Umsatzlücken schließen</h2>
+          <p class="section-desc">
+            Buchen Sie Ihr kostenloses Strategiegespräch. Wir analysieren gemeinsam Ihre Antworten aus dem Quick-Test oder berechnen Ihr exaktes Potenzial für Ihren Betrieb.
+          </p>
+
+          <div class="contact-bullets-list">
+            <div class="bullet-item">
+              <span class="bullet-icon">💬</span>
+              <div class="bullet-text">
+                <h4 class="bullet-title">Schnell & Unverbindlich</h4>
+                <p class="bullet-desc">15-minütiges Kennenlernen per Telefon oder Zoom.</p>
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-icon">📈</span>
+              <div class="bullet-text">
+                <h4 class="bullet-title">Konkreter Schritt-für-Schritt Plan</h4>
+                <p class="bullet-desc">Sie erhalten Ihren Fahrplan direkt nach dem Gespräch per E-Mail.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="contact-form-col">
+          <div class="contact-card">
+            <h3 class="contact-card-title">Gespräch jetzt anfordern</h3>
+            
+            <form class="contact-form" id="audit-lead-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.'); this.reset();">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-name" class="form-label">Ihr Name</label>
+                  <input type="text" id="form-name" required placeholder="z.B. Thomas Müller" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="form-company" class="form-label">Firmenname</label>
+                  <input type="text" id="form-company" required placeholder="z.B. Müller Bedachungen GmbH" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-email" class="form-label">E-Mail-Adresse</label>
+                  <input type="email" id="form-email" required placeholder="name@firma.de" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="form-phone" class="form-label">Telefonnummer</label>
+                  <input type="tel" id="form-phone" required placeholder="z.B. 0170 1234567" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">Ihre Nachricht / Bemerkung (Optional)</label>
+                <textarea id="form-message" rows="3" placeholder="Gibt es ein bestimmtes Problem, das Sie zuerst lösen möchten?" class="form-textarea"></textarea>
+              </div>
+
+              <div class="form-checkbox-group">
+                <input type="checkbox" id="form-privacy" required class="form-checkbox">
+                <label for="form-privacy" class="form-checkbox-label">
+                  Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und Zuordnung für eventuelle Rückfragen gespeichert werden. Weitere Infos unter Datenschutz.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Termin kostenfrei anfragen →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-col footer-brand-col">
+          <a href="#" class="nav-logo footer-logo">
+            <img src="./alphaflowcrm_logo.png" alt="AlphaflowCRM" class="brand-logo-img">
+          </a>
+          <p class="footer-desc-text">
+            Versteckte Umsatzlücken aufdecken und täglich Umsatzverluste stoppen. Für inhabergeführte KMU, die ihr Wachstum automatisieren wollen.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-col footer-links-col">
+          <div class="footer-links-subgrid">
+            <div>
+              <h4 class="footer-title">Navigation</h4>
+              <ul class="footer-links">
+                <li><a href="#problem" class="footer-link-item">Das Problem</a></li>
+                <li><a href="#rechner" class="footer-link-item">Umsatz-Rechner</a></li>
+                <li><a href="#loesung" class="footer-link-item">Die 5 Säulen</a></li>
+                <li><a href="./ki-rezeptionist.html" class="footer-link-item">KI-Rezeptionist</a></li>
+                <li><a href="#simulator" class="footer-link-item">KI-Simulator</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="footer-title">Rechtliches</h4>
+              <ul class="footer-links">
+                <li><a href="#" class="footer-link-item">Impressum</a></li>
+                <li><a href="#" class="footer-link-item">Datenschutz</a></li>
+                <li><a href="#" class="footer-link-item">AGB</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col footer-contact-col">
+          <h4 class="footer-title">Kontakt</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="contact-icon">📧</span>
+              <a href="mailto:kontakt@alphaflow.de" class="contact-link">kontakt@alphaflow.de</a>
+            </li>
+            <li>
+              <span class="contact-icon">📞</span>
+              <span>+49 (0) 000 000 000</span>
+            </li>
+          </ul>
+          <div class="footer-notice-badge">
+            <p class="notice-title">Ergebnis in 48h</p>
+            <p class="notice-desc">Individuelle Auswertung nach Erstgespräch.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright row -->
+      <div class="footer-bottom">
+        <p>© 2026 Alphaflow. Alle Rechte vorbehalten.</p>
+        <p>Hergestellt für den deutschen Mittelstand.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
