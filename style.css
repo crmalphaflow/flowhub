@@ -778,6 +778,32 @@ ul, ol { list-style: none; }
   line-height: 1.6;
   margin-bottom: 1rem;
 }
+.admin-login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(18,22,32,0.72);
+  border: 1px solid rgba(120,236,255,0.16);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.admin-login-card strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+.admin-login-card p {
+  color: var(--gray-400);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.admin-login-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
 .admin-table-wrap {
   overflow-x: auto;
   background: rgba(18,22,32,0.72);
@@ -812,6 +838,15 @@ ul, ol { list-style: none; }
 @media (min-width: 760px) {
   .admin-toolbar {
     flex-direction: row;
+    align-items: center;
+  }
+  .admin-login-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .admin-login-form {
+    grid-template-columns: minmax(220px, 320px) auto;
     align-items: center;
   }
 }

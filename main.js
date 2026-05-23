@@ -2,6 +2,8 @@
    ALPHAFLOW CRM INTERACTIVE LOGIC
    ========================================== */
 
+import { createClient } from '@supabase/supabase-js';
+
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initCalculator();
@@ -17,6 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const LEAD_EMAIL = 'princg86@gmail.com';
 const LEAD_STORAGE_KEY = 'alphaflow_leads';
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://inmfghpihwbyuqzygxmj.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_Xo5IW8RCwDUJi2YlQw7F9A_H8rzAT8v';
+const SUPABASE_LEADS_TABLE = 'leads';
+
+const supabase = SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY
+  ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+  : null;
 
 /* 1. Navbar Scroll Effect & Mobile Menu */
 function initNavbar() {
@@ -245,6 +254,11 @@ function initLeadCaptureForms() {
       }
 
       try {
+        try {
+          await saveLeadToSupabase(lead);
+        } catch (supabaseError) {
+          console.warn('Supabase lead save failed:', supabaseError);
+        }
         await sendLeadByEmail(lead);
         alert('Vielen Dank! Ihre Anfrage wurde versendet. Wir melden uns innerhalb von 24 Stunden.');
         form.reset();
@@ -281,6 +295,26 @@ function buildLeadFromForm(form) {
   }
 
   return lead;
+}
+
+async function saveLeadToSupabase(lead) {
+  if (!supabase) return;
+
+  const { error } = await supabase.from(SUPABASE_LEADS_TABLE).insert({
+    id: lead.id,
+    created_at: lead.createdAt,
+    source: lead.source,
+    page: lead.page,
+    name: lead.name,
+    company: lead.company,
+    email: lead.email,
+    phone: lead.phone,
+    message: lead.message,
+    audit_summary: lead.auditSummary,
+    status: 'new'
+  });
+
+  if (error) throw error;
 }
 
 async function sendLeadByEmail(lead) {
@@ -335,10 +369,40 @@ function initAdminPanel() {
   const emptyState = document.getElementById('admin-empty-state');
   const countEl = document.getElementById('admin-lead-count');
   const exportBtn = document.getElementById('admin-export-csv');
+  const refreshBtn = document.getElementById('admin-refresh-leads');
   const clearBtn = document.getElementById('admin-clear-leads');
+  const loginForm = document.getElementById('admin-login-form');
+  const loginEmail = document.getElementById('admin-login-email');
+  const logoutBtn = document.getElementById('admin-logout-btn');
+  const authTitle = document.getElementById('admin-auth-title');
+  const authDesc = document.getElementById('admin-auth-desc');
 
-  function render() {
-    const leads = getStoredLeads();
+  let currentLeads = getStoredLeads();
+
+  async function loadLeads() {
+    currentLeads = getStoredLeads();
+
+    if (supabase) {
+      const { data: { session } } = await supabase.auth.getSession();
+      updateAdminAuthUi(session);
+
+      if (session) {
+        const { data, error } = await supabase
+          .from(SUPABASE_LEADS_TABLE)
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (!error && data) currentLeads = data.map(normalizeSupabaseLead);
+        if (error) {
+          emptyState.textContent = 'Supabase-Leads konnten nicht geladen werden. Prüfe Tabelle, RLS-Policy und Admin-Login.';
+        }
+      }
+    }
+
+    render(currentLeads);
+  }
+
+  function render(leads) {
     countEl.textContent = leads.length.toString();
     emptyState.classList.toggle('hidden', leads.length > 0);
     tableBody.innerHTML = '';
@@ -357,8 +421,41 @@ function initAdminPanel() {
     });
   }
 
+  function updateAdminAuthUi(session) {
+    if (!loginForm || !logoutBtn || !authTitle || !authDesc) return;
+    const loggedIn = Boolean(session);
+    loginForm.classList.toggle('hidden', loggedIn);
+    logoutBtn.classList.toggle('hidden', !loggedIn);
+    authTitle.textContent = loggedIn ? `Angemeldet als ${session.user.email}` : 'Per E-Mail anmelden';
+    authDesc.textContent = loggedIn
+      ? 'Supabase-Leads werden zentral geladen.'
+      : 'Du bekommst einen Magic Link. Danach kann diese Seite Supabase-Leads laden.';
+  }
+
+  if (loginForm && supabase) {
+    loginForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const email = loginEmail.value.trim();
+      if (!email) return;
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: `${window.location.origin}/admin.html` }
+      });
+      alert(error ? `Login-Link konnte nicht gesendet werden: ${error.message}` : 'Login-Link wurde gesendet. Bitte E-Mail prüfen.');
+    });
+  }
+
+  if (logoutBtn && supabase) {
+    logoutBtn.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      await loadLeads();
+    });
+  }
+
+  if (refreshBtn) refreshBtn.addEventListener('click', loadLeads);
+
   exportBtn.addEventListener('click', () => {
-    const csv = leadsToCsv(getStoredLeads());
+    const csv = leadsToCsv(currentLeads);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -371,10 +468,29 @@ function initAdminPanel() {
   clearBtn.addEventListener('click', () => {
     if (!confirm('Lokale Lead-Liste wirklich löschen?')) return;
     localStorage.removeItem(LEAD_STORAGE_KEY);
-    render();
+    loadLeads();
   });
 
-  render();
+  if (supabase) {
+    supabase.auth.onAuthStateChange(() => loadLeads());
+  }
+
+  loadLeads();
+}
+
+function normalizeSupabaseLead(row) {
+  return {
+    id: row.id,
+    createdAt: row.created_at,
+    source: row.source,
+    page: row.page,
+    name: row.name,
+    company: row.company,
+    email: row.email,
+    phone: row.phone,
+    message: row.message,
+    auditSummary: row.audit_summary
+  };
 }
 
 function leadsToCsv(leads) {

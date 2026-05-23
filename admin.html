@@ -30,7 +30,7 @@
         <span class="section-badge">Lead Management</span>
         <h1 class="admin-title">Alphaflow Leads</h1>
         <p class="admin-desc">
-          E-Mail-Versand läuft an <strong>princg86@gmail.com</strong>. Diese Ansicht zeigt lokal gespeicherte Leads aus diesem Browser und eignet sich als schnelle Kontrolle und CSV-Export.
+          Leads werden per E-Mail an <strong>princg86@gmail.com</strong> gesendet und zusätzlich in Supabase gespeichert, sobald die Tabelle eingerichtet ist.
         </p>
       </div>
     </section>
@@ -44,12 +44,26 @@
           </div>
           <div class="admin-actions">
             <button class="btn btn-secondary btn-md" id="admin-export-csv" type="button">CSV exportieren</button>
+            <button class="btn btn-secondary btn-md" id="admin-refresh-leads" type="button">Aktualisieren</button>
             <button class="btn btn-secondary btn-md" id="admin-clear-leads" type="button">Lokal löschen</button>
           </div>
         </div>
 
         <div class="admin-note">
-          Für ein echtes, geräteübergreifendes Admin-Panel brauchen wir als nächsten Schritt Supabase, Firebase, HighLevel oder einen kleinen Server-Endpunkt. GitHub Pages allein kann keine zentrale Datenbank sicher betreiben.
+          Supabase speichert Leads zentral. Melde dich mit einer erlaubten Admin-E-Mail an, um die Daten aus der Datenbank zu laden. Lokale Browser-Leads bleiben als Fallback verfügbar.
+        </div>
+
+        <div class="admin-login-card" id="admin-auth-card">
+          <div>
+            <span class="impact-label">Admin Login</span>
+            <strong id="admin-auth-title">Per E-Mail anmelden</strong>
+            <p id="admin-auth-desc">Du bekommst einen Magic Link. Danach kann diese Seite Supabase-Leads laden.</p>
+          </div>
+          <form id="admin-login-form" class="admin-login-form">
+            <input type="email" id="admin-login-email" class="form-input" placeholder="admin@email.de" required>
+            <button class="btn btn-primary btn-md" type="submit">Login-Link senden</button>
+          </form>
+          <button class="btn btn-secondary btn-md hidden" id="admin-logout-btn" type="button">Abmelden</button>
         </div>
 
         <div class="admin-table-wrap">
