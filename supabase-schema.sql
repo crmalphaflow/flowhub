@@ -27,7 +27,7 @@ on public.leads
 for select
 to authenticated
 using (
-  auth.jwt() ->> 'email' in ('princg86@gmail.com')
+  auth.jwt() ->> 'email' in ('princg86@gmail.com', 'princg@alphaflowcrm.com')
 );
 
 drop policy if exists "Allow authenticated admins to update leads" on public.leads;
@@ -36,8 +36,8 @@ on public.leads
 for update
 to authenticated
 using (
-  auth.jwt() ->> 'email' in ('princg86@gmail.com')
+  auth.jwt() ->> 'email' in ('princg86@gmail.com', 'princg@alphaflowcrm.com')
 )
 with check (
-  auth.jwt() ->> 'email' in ('princg86@gmail.com')
+  auth.jwt() ->> 'email' in ('princg86@gmail.com', 'princg@alphaflowcrm.com')
 );

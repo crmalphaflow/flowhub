@@ -846,7 +846,7 @@ ul, ol { list-style: none; }
     justify-content: space-between;
   }
   .admin-login-form {
-    grid-template-columns: minmax(220px, 320px) auto;
+    grid-template-columns: minmax(180px, 230px) minmax(180px, 230px) auto;
     align-items: center;
   }
 }

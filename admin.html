@@ -56,12 +56,13 @@
         <div class="admin-login-card" id="admin-auth-card">
           <div>
             <span class="impact-label">Admin Login</span>
-            <strong id="admin-auth-title">Per E-Mail anmelden</strong>
-            <p id="admin-auth-desc">Du bekommst einen Magic Link. Danach kann diese Seite Supabase-Leads laden.</p>
+            <strong id="admin-auth-title">Benutzername + Passwort</strong>
+            <p id="admin-auth-desc">Melde dich an, um Leads aus Supabase zentral zu verwalten.</p>
           </div>
           <form id="admin-login-form" class="admin-login-form">
-            <input type="email" id="admin-login-email" class="form-input" placeholder="admin@email.de" required>
-            <button class="btn btn-primary btn-md" type="submit">Login-Link senden</button>
+            <input type="text" id="admin-login-username" class="form-input" placeholder="Benutzername (z.B. PrincG)" required>
+            <input type="password" id="admin-login-password" class="form-input" placeholder="Passwort" required>
+            <button class="btn btn-primary btn-md" type="submit">Anmelden</button>
           </form>
           <button class="btn btn-secondary btn-md hidden" id="admin-logout-btn" type="button">Abmelden</button>
         </div>

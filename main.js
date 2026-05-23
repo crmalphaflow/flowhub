@@ -27,6 +27,10 @@ const supabase = SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY
   ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
 
+const ADMIN_USER_MAP = {
+  princg: 'princg@alphaflowcrm.com'
+};
+
 /* 1. Navbar Scroll Effect & Mobile Menu */
 function initNavbar() {
   const nav = document.getElementById('main-nav');
@@ -372,7 +376,8 @@ function initAdminPanel() {
   const refreshBtn = document.getElementById('admin-refresh-leads');
   const clearBtn = document.getElementById('admin-clear-leads');
   const loginForm = document.getElementById('admin-login-form');
-  const loginEmail = document.getElementById('admin-login-email');
+  const loginUsername = document.getElementById('admin-login-username');
+  const loginPassword = document.getElementById('admin-login-password');
   const logoutBtn = document.getElementById('admin-logout-btn');
   const authTitle = document.getElementById('admin-auth-title');
   const authDesc = document.getElementById('admin-auth-desc');
@@ -426,22 +431,23 @@ function initAdminPanel() {
     const loggedIn = Boolean(session);
     loginForm.classList.toggle('hidden', loggedIn);
     logoutBtn.classList.toggle('hidden', !loggedIn);
-    authTitle.textContent = loggedIn ? `Angemeldet als ${session.user.email}` : 'Per E-Mail anmelden';
+    authTitle.textContent = loggedIn ? `Angemeldet als ${session.user.email}` : 'Benutzername + Passwort';
     authDesc.textContent = loggedIn
       ? 'Supabase-Leads werden zentral geladen.'
-      : 'Du bekommst einen Magic Link. Danach kann diese Seite Supabase-Leads laden.';
+      : 'Melde dich mit Benutzername und Passwort an, um Supabase-Leads zu laden.';
   }
 
   if (loginForm && supabase) {
     loginForm.addEventListener('submit', async event => {
       event.preventDefault();
-      const email = loginEmail.value.trim();
-      if (!email) return;
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: { emailRedirectTo: `${window.location.origin}/admin.html` }
-      });
-      alert(error ? `Login-Link konnte nicht gesendet werden: ${error.message}` : 'Login-Link wurde gesendet. Bitte E-Mail prüfen.');
+      const username = loginUsername.value.trim();
+      const password = loginPassword.value;
+      const email = resolveAdminEmail(username);
+
+      if (!email || !password) return;
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      alert(error ? `Login fehlgeschlagen: ${error.message}` : 'Login erfolgreich.');
+      if (!error) await loadLeads();
     });
   }
 
@@ -476,6 +482,13 @@ function initAdminPanel() {
   }
 
   loadLeads();
+}
+
+function resolveAdminEmail(username) {
+  const normalized = String(username || '').trim().toLowerCase();
+  if (!normalized) return '';
+  if (normalized.includes('@')) return normalized;
+  return ADMIN_USER_MAP[normalized] || `${normalized}@alphaflowcrm.com`;
 }
 
 function normalizeSupabaseLead(row) {
