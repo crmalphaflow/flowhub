@@ -34,8 +34,7 @@ jobs:
         run: npm run build
         env:
           VITE_LIVEKIT_URL: ${{ secrets.VITE_LIVEKIT_URL }}
-          VITE_LIVEKIT_API_KEY: ${{ secrets.VITE_LIVEKIT_API_KEY }}
-          VITE_LIVEKIT_API_SECRET: ${{ secrets.VITE_LIVEKIT_API_SECRET }}
+          VITE_LIVEKIT_TOKEN_ENDPOINT: ${{ secrets.VITE_LIVEKIT_TOKEN_ENDPOINT }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

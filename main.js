@@ -76,43 +76,7 @@ function initVoiceAgentWidget() {
   let LiveKitRoomEvent = null;
 
   const livekitUrl = import.meta.env.VITE_LIVEKIT_URL || 'wss://livekit.alphaflowcrm.com';
-  const apiKey = import.meta.env.VITE_LIVEKIT_API_KEY || 'alphaflow_key';
-  const apiSecret = import.meta.env.VITE_LIVEKIT_API_SECRET || '';
-
-  async function generateToken() {
-    // Client-side JWT generation for demo purposes.
-    // In production, move this to a server-side endpoint.
-    function base64url(str) {
-      return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    }
-
-    const header = base64url(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
-    const now = Math.floor(Date.now() / 1000);
-    const payload = base64url(JSON.stringify({
-      iss: apiKey,
-      sub: 'web-user-' + Math.random().toString(36).substr(2, 8),
-      iat: now,
-      exp: now + 3600,
-      video: {
-        roomJoin: true,
-        room: 'alphaflow-demo',
-        canPublish: true,
-        canSubscribe: true,
-        canPublishData: true,
-      }
-    }));
-
-    const encoder = new TextEncoder();
-    const key = await crypto.subtle.importKey(
-      'raw', encoder.encode(apiSecret),
-      { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
-    );
-    const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(header + '.' + payload));
-    const sigB64 = btoa(String.fromCharCode(...new Uint8Array(sig)))
-      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
-    return header + '.' + payload + '.' + sigB64;
-  }
+  const tokenEndpoint = import.meta.env.VITE_LIVEKIT_TOKEN_ENDPOINT || '/api/livekit/token';
 
   function setWidgetState(state, message) {
     const statusText = {
@@ -201,7 +165,18 @@ function initVoiceAgentWidget() {
         LiveKitRoomEvent = livekit.RoomEvent;
       }
 
-      const token = await generateToken();
+      const res = await fetch(tokenEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          roomName: 'alphaflow-demo',
+          participantName: `web-user-${Date.now()}`
+        })
+      });
+
+      if (!res.ok) throw new Error(`Token-Endpunkt nicht erreichbar (${res.status})`);
+      const { token, error } = await res.json();
+      if (error || !token) throw new Error(error || 'Kein LiveKit-Token erhalten');
 
       room = new LiveKitRoom({ adaptiveStream: true, dynacast: true });
 
