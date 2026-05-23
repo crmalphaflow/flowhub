@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlphaflowCRM | Admin Leads</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="navbar" id="main-nav">
+    <div class="container nav-container">
+      <a href="./index.html" class="nav-logo">
+        <img src="./alphaflowcrm_logo.png" alt="AlphaflowCRM" class="brand-logo-img">
+      </a>
+      <nav class="nav-menu">
+        <a href="./index.html" class="nav-link">Website</a>
+        <a href="./ki-rezeptionist.html" class="nav-link">KI-Rezeptionist</a>
+        <a href="./admin.html" class="nav-link nav-link-active">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <section class="admin-hero">
+      <div class="container">
+        <span class="section-badge">Lead Management</span>
+        <h1 class="admin-title">Alphaflow Leads</h1>
+        <p class="admin-desc">
+          E-Mail-Versand läuft an <strong>princg86@gmail.com</strong>. Diese Ansicht zeigt lokal gespeicherte Leads aus diesem Browser und eignet sich als schnelle Kontrolle und CSV-Export.
+        </p>
+      </div>
+    </section>
+
+    <section class="admin-section" id="admin-leads-root">
+      <div class="container">
+        <div class="admin-toolbar">
+          <div>
+            <span class="impact-label">Gespeicherte Leads</span>
+            <strong><span id="admin-lead-count">0</span> Einträge</strong>
+          </div>
+          <div class="admin-actions">
+            <button class="btn btn-secondary btn-md" id="admin-export-csv" type="button">CSV exportieren</button>
+            <button class="btn btn-secondary btn-md" id="admin-clear-leads" type="button">Lokal löschen</button>
+          </div>
+        </div>
+
+        <div class="admin-note">
+          Für ein echtes, geräteübergreifendes Admin-Panel brauchen wir als nächsten Schritt Supabase, Firebase, HighLevel oder einen kleinen Server-Endpunkt. GitHub Pages allein kann keine zentrale Datenbank sicher betreiben.
+        </div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Zeitpunkt</th>
+                <th>Name</th>
+                <th>Firma</th>
+                <th>E-Mail</th>
+                <th>Telefon</th>
+                <th>Quelle</th>
+              </tr>
+            </thead>
+            <tbody id="admin-leads-body"></tbody>
+          </table>
+          <p class="admin-empty" id="admin-empty-state">Noch keine lokalen Leads in diesem Browser gespeichert.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

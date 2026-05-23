@@ -11,7 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initVoiceAgentWidget();
   initFAQ();
   initScrollAnimations();
+  initLeadCaptureForms();
+  initAdminPanel();
 });
+
+const LEAD_EMAIL = 'princg86@gmail.com';
+const LEAD_STORAGE_KEY = 'alphaflow_leads';
 
 /* 1. Navbar Scroll Effect & Mobile Menu */
 function initNavbar() {
@@ -218,6 +223,188 @@ function initVoiceAgentWidget() {
   connectBtn.addEventListener('click', connect);
   disconnectBtn.addEventListener('click', disconnect);
   window.addEventListener('beforeunload', disconnect);
+}
+
+/* Lead capture: sends static-site form submissions by email and keeps a local fallback. */
+function initLeadCaptureForms() {
+  const forms = document.querySelectorAll('.lead-capture-form');
+  if (!forms.length) return;
+
+  forms.forEach(form => {
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalLabel = submitButton ? submitButton.textContent : '';
+      const lead = buildLeadFromForm(form);
+
+      saveLeadLocally(lead);
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Wird gesendet...';
+      }
+
+      try {
+        await sendLeadByEmail(lead);
+        alert('Vielen Dank! Ihre Anfrage wurde versendet. Wir melden uns innerhalb von 24 Stunden.');
+        form.reset();
+      } catch {
+        alert('Danke! Ihre Anfrage wurde lokal vorgemerkt. Falls keine E-Mail ankommt, bitte kurz direkt an princg86@gmail.com schreiben.');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel;
+        }
+      }
+    });
+  });
+}
+
+function buildLeadFromForm(form) {
+  const data = new FormData(form);
+  const lead = {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    createdAt: new Date().toISOString(),
+    source: form.dataset.leadSource || 'Website',
+    page: window.location.href,
+    name: data.get('name') || '',
+    company: data.get('company') || '',
+    email: data.get('email') || '',
+    phone: data.get('phone') || '',
+    message: data.get('message') || '',
+    auditSummary: data.get('audit_summary') || ''
+  };
+
+  if (!lead.auditSummary) {
+    const summaryInput = document.getElementById('audit-result-summary');
+    lead.auditSummary = summaryInput ? summaryInput.value : '';
+  }
+
+  return lead;
+}
+
+async function sendLeadByEmail(lead) {
+  const payload = new FormData();
+  payload.append('_subject', `Neuer Alphaflow Lead: ${lead.source}`);
+  payload.append('_template', 'table');
+  payload.append('_captcha', 'false');
+  payload.append('Quelle', lead.source);
+  payload.append('Zeitpunkt', new Date(lead.createdAt).toLocaleString('de-DE'));
+  payload.append('Name', lead.name);
+  payload.append('Firma', lead.company);
+  payload.append('E-Mail', lead.email);
+  payload.append('Telefon', lead.phone);
+  payload.append('Nachricht', lead.message);
+  payload.append('Audit-Ergebnis', lead.auditSummary);
+  payload.append('Seite', lead.page);
+
+  const response = await fetch(`https://formsubmit.co/ajax/${LEAD_EMAIL}`, {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    body: payload
+  });
+
+  if (!response.ok) throw new Error('Lead email failed');
+  try {
+    const result = await response.json();
+    if (result.success === false) throw new Error('Lead email rejected');
+  } catch {
+    // FormSubmit can answer with non-JSON in some confirmation states. HTTP 2xx is enough here.
+  }
+}
+
+function getStoredLeads() {
+  try {
+    return JSON.parse(localStorage.getItem(LEAD_STORAGE_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function saveLeadLocally(lead) {
+  const leads = getStoredLeads();
+  leads.unshift(lead);
+  localStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(leads.slice(0, 250)));
+}
+
+function initAdminPanel() {
+  const adminRoot = document.getElementById('admin-leads-root');
+  if (!adminRoot) return;
+
+  const tableBody = document.getElementById('admin-leads-body');
+  const emptyState = document.getElementById('admin-empty-state');
+  const countEl = document.getElementById('admin-lead-count');
+  const exportBtn = document.getElementById('admin-export-csv');
+  const clearBtn = document.getElementById('admin-clear-leads');
+
+  function render() {
+    const leads = getStoredLeads();
+    countEl.textContent = leads.length.toString();
+    emptyState.classList.toggle('hidden', leads.length > 0);
+    tableBody.innerHTML = '';
+
+    leads.forEach(lead => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${escapeHtml(new Date(lead.createdAt).toLocaleString('de-DE'))}</td>
+        <td>${escapeHtml(lead.name)}</td>
+        <td>${escapeHtml(lead.company)}</td>
+        <td><a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></td>
+        <td>${escapeHtml(lead.phone)}</td>
+        <td>${escapeHtml(lead.source)}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  }
+
+  exportBtn.addEventListener('click', () => {
+    const csv = leadsToCsv(getStoredLeads());
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `alphaflow-leads-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    if (!confirm('Lokale Lead-Liste wirklich löschen?')) return;
+    localStorage.removeItem(LEAD_STORAGE_KEY);
+    render();
+  });
+
+  render();
+}
+
+function leadsToCsv(leads) {
+  const headers = ['Zeitpunkt', 'Name', 'Firma', 'E-Mail', 'Telefon', 'Quelle', 'Nachricht', 'Audit-Ergebnis', 'Seite'];
+  const rows = leads.map(lead => [
+    lead.createdAt,
+    lead.name,
+    lead.company,
+    lead.email,
+    lead.phone,
+    lead.source,
+    lead.message,
+    lead.auditSummary,
+    lead.page
+  ]);
+  return [headers, ...rows].map(row => row.map(csvEscape).join(',')).join('\n');
+}
+
+function csvEscape(value) {
+  return `"${String(value || '').replace(/"/g, '""')}"`;
+}
+
+function escapeHtml(value) {
+  return String(value || '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[char]));
 }
 
 /* 2. Interactive Revenue Loss Calculator */
@@ -464,13 +651,6 @@ function initQuiz() {
 
   quizStartBtn.addEventListener('click', startQuiz);
   quizRestartAction.addEventListener('click', restartQuiz);
-  if (auditResultForm) {
-    auditResultForm.addEventListener('submit', event => {
-      event.preventDefault();
-      alert('Vielen Dank! Wir melden uns innerhalb von 24 Stunden mit Ihrem persönlichen Umsetzungsplan.');
-      auditResultForm.reset();
-    });
-  }
 
   function startQuiz() {
     quizWelcome.classList.add('hidden');

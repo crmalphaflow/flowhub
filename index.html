@@ -774,7 +774,7 @@
               🔒 <strong>Vollständiges Audit sichern:</strong> In einem kurzen 15-minütigen Gespräch gehen wir Ihre Antworten im Detail durch und geben Ihnen einen kostenfreien, individuellen Umsetzungsplan.
             </div>
 
-            <form class="audit-result-form" id="audit-result-form">
+            <form class="audit-result-form lead-capture-form" id="audit-result-form" data-lead-source="Audit Ergebnis">
               <div class="audit-form-header">
                 <span class="impact-label">Umsatzlücken beheben lassen</span>
                 <h3>Ihre kostenlose Auswertung anfordern</h3>
@@ -782,22 +782,22 @@
               <div class="audit-result-form-grid">
                 <div class="form-group">
                   <label for="audit-result-name" class="form-label">Ihr Name</label>
-                  <input type="text" id="audit-result-name" required placeholder="z.B. Thomas Müller" class="form-input">
+                  <input type="text" id="audit-result-name" name="name" required placeholder="z.B. Thomas Müller" class="form-input">
                 </div>
                 <div class="form-group">
                   <label for="audit-result-company" class="form-label">Firma</label>
-                  <input type="text" id="audit-result-company" required placeholder="z.B. Müller GmbH" class="form-input">
+                  <input type="text" id="audit-result-company" name="company" required placeholder="z.B. Müller GmbH" class="form-input">
                 </div>
                 <div class="form-group">
                   <label for="audit-result-email" class="form-label">E-Mail</label>
-                  <input type="email" id="audit-result-email" required placeholder="name@firma.de" class="form-input">
+                  <input type="email" id="audit-result-email" name="email" required placeholder="name@firma.de" class="form-input">
                 </div>
                 <div class="form-group">
                   <label for="audit-result-phone" class="form-label">Telefon</label>
-                  <input type="tel" id="audit-result-phone" required placeholder="0170 1234567" class="form-input">
+                  <input type="tel" id="audit-result-phone" name="phone" required placeholder="0170 1234567" class="form-input">
                 </div>
               </div>
-              <input type="hidden" id="audit-result-summary">
+              <input type="hidden" id="audit-result-summary" name="audit_summary">
               <div class="form-checkbox-group">
                 <input type="checkbox" id="audit-result-privacy" required class="form-checkbox">
                 <label for="audit-result-privacy" class="form-checkbox-label">
@@ -1185,32 +1185,32 @@
           <div class="contact-card">
             <h3 class="contact-card-title">Gespräch jetzt anfordern</h3>
             
-            <form class="contact-form" id="audit-lead-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.'); this.reset();">
+            <form class="contact-form lead-capture-form" id="audit-lead-form" data-lead-source="Kontaktformular">
               <div class="form-row">
                 <div class="form-group">
                   <label for="form-name" class="form-label">Ihr Name</label>
-                  <input type="text" id="form-name" required placeholder="z.B. Thomas Müller" class="form-input">
+                  <input type="text" id="form-name" name="name" required placeholder="z.B. Thomas Müller" class="form-input">
                 </div>
                 <div class="form-group">
                   <label for="form-company" class="form-label">Firmenname</label>
-                  <input type="text" id="form-company" required placeholder="z.B. Müller Bedachungen GmbH" class="form-input">
+                  <input type="text" id="form-company" name="company" required placeholder="z.B. Müller Bedachungen GmbH" class="form-input">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label for="form-email" class="form-label">E-Mail-Adresse</label>
-                  <input type="email" id="form-email" required placeholder="name@firma.de" class="form-input">
+                  <input type="email" id="form-email" name="email" required placeholder="name@firma.de" class="form-input">
                 </div>
                 <div class="form-group">
                   <label for="form-phone" class="form-label">Telefonnummer</label>
-                  <input type="tel" id="form-phone" required placeholder="z.B. 0170 1234567" class="form-input">
+                  <input type="tel" id="form-phone" name="phone" required placeholder="z.B. 0170 1234567" class="form-input">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="form-message" class="form-label">Ihre Nachricht / Bemerkung (Optional)</label>
-                <textarea id="form-message" rows="3" placeholder="Gibt es ein bestimmtes Problem, das Sie zuerst lösen möchten?" class="form-textarea"></textarea>
+                <textarea id="form-message" name="message" rows="3" placeholder="Gibt es ein bestimmtes Problem, das Sie zuerst lösen möchten?" class="form-textarea"></textarea>
               </div>
 
               <div class="form-checkbox-group">
@@ -1254,6 +1254,7 @@
                 <li><a href="#rechner" class="footer-link-item">Umsatz-Rechner</a></li>
                 <li><a href="#loesung" class="footer-link-item">Die 5 Säulen</a></li>
                 <li><a href="./ki-rezeptionist.html" class="footer-link-item">KI-Rezeptionist</a></li>
+                <li><a href="./admin.html" class="footer-link-item">Admin</a></li>
                 <li><a href="#simulator" class="footer-link-item">KI-Simulator</a></li>
               </ul>
             </div>

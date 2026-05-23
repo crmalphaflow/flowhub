@@ -720,6 +720,103 @@ ul, ol { list-style: none; }
 }
 
 /* ==========================================
+   ADMIN PAGE
+   ========================================== */
+.admin-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(249,115,22,0.12), transparent 32%),
+    radial-gradient(circle at 10% 20%, rgba(34,211,238,0.1), transparent 28%),
+    var(--brand-bg);
+  padding-top: 72px;
+}
+.admin-hero {
+  padding: 5rem 0 2rem;
+  border-bottom: 1px solid var(--brand-border);
+}
+.admin-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+.admin-desc {
+  max-width: 760px;
+  color: var(--gray-300);
+  line-height: 1.7;
+}
+.admin-section { padding: 2rem 0 5rem; }
+.admin-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  background: rgba(18,22,32,0.72);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.admin-toolbar strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.admin-note {
+  background: var(--brand-orange-muted);
+  border: 1px solid rgba(249,115,22,0.22);
+  border-radius: var(--radius-md);
+  color: var(--gray-300);
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.admin-table-wrap {
+  overflow-x: auto;
+  background: rgba(18,22,32,0.72);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-lg);
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+.admin-table th,
+.admin-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--brand-border);
+  text-align: left;
+  font-size: 0.8rem;
+}
+.admin-table th {
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+}
+.admin-table td { color: var(--gray-200); }
+.admin-table a { color: var(--brand-orange); }
+.admin-empty {
+  padding: 1.5rem;
+  color: var(--gray-400);
+  font-size: 0.88rem;
+}
+@media (min-width: 760px) {
+  .admin-toolbar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ==========================================
    SECTION COMMON STYLES
    ========================================== */
 .problem-section,
