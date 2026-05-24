@@ -89,7 +89,21 @@ function initVoiceAgentWidget() {
   let LiveKitRoomEvent = null;
 
   const livekitUrl = import.meta.env.VITE_LIVEKIT_URL || 'wss://livekit.alphaflowcrm.com';
-  const tokenEndpoint = import.meta.env.VITE_LIVEKIT_TOKEN_ENDPOINT || '/api/livekit/token';
+  const tokenEndpoint = import.meta.env.VITE_LIVEKIT_TOKEN_ENDPOINT || 'https://livekit.alphaflowcrm.com/api/livekit/token';
+
+  async function generateToken() {
+    const res = await fetch(tokenEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        roomName: 'alphaflow-demo',
+        identity: 'web-user-' + Math.random().toString(36).substr(2, 8),
+      }),
+    });
+    if (!res.ok) throw new Error('Token request failed: ' + res.status);
+    const data = await res.json();
+    return data.token;
+  }
 
   function setWidgetState(state, message) {
     const statusText = {
