@@ -381,6 +381,7 @@ function initAdminPanel() {
   const logoutBtn = document.getElementById('admin-logout-btn');
   const authTitle = document.getElementById('admin-auth-title');
   const authDesc = document.getElementById('admin-auth-desc');
+  const isFileProtocol = window.location.protocol === 'file:';
 
   let currentLeads = getStoredLeads();
 
@@ -432,8 +433,13 @@ function initAdminPanel() {
     loginForm.classList.toggle('hidden', loggedIn);
     logoutBtn.classList.toggle('hidden', !loggedIn);
     authTitle.textContent = loggedIn ? `Angemeldet als ${session.user.email}` : 'Benutzername + Passwort';
-    authDesc.textContent = loggedIn
-      ? 'Supabase-Leads werden zentral geladen.'
+    if (loggedIn) {
+      authDesc.textContent = 'Supabase-Leads werden zentral geladen.';
+      return;
+    }
+
+    authDesc.textContent = isFileProtocol
+      ? 'Hinweis: Diese Seite wurde per file:// geöffnet. Bitte über Domain oder localhost öffnen, sonst kann Supabase den Login blockieren.'
       : 'Melde dich mit Benutzername und Passwort an, um Supabase-Leads zu laden.';
   }
 
@@ -445,9 +451,18 @@ function initAdminPanel() {
       const email = resolveAdminEmail(username);
 
       if (!email || !password) return;
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      alert(error ? `Login fehlgeschlagen: ${error.message}` : 'Login erfolgreich.');
-      if (!error) await loadLeads();
+
+      try {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        alert(error ? `Login fehlgeschlagen: ${error.message}` : 'Login erfolgreich.');
+        if (!error) await loadLeads();
+      } catch (networkError) {
+        console.error('Admin login network error:', networkError);
+        const help = isFileProtocol
+          ? 'Öffne das Admin-Panel über https://alphaflowcrm.com/admin.html oder einen lokalen Server (nicht file://).'
+          : 'Prüfe Internetverbindung, Browser-Blocker und ob die Supabase-URL erreichbar ist.';
+        alert(`Login fehlgeschlagen: Netzwerkfehler (Failed to fetch). ${help}`);
+      }
     });
   }
 
