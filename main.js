@@ -85,6 +85,8 @@ function initVoiceAgentWidget() {
   let analyser = null;
   let animationFrame = 0;
   let speakingTimeout = 0;
+  let demoTimers = [];
+  let demoMode = false;
   let LiveKitRoom = null;
   let LiveKitRoomEvent = null;
 
@@ -141,6 +143,51 @@ function initVoiceAgentWidget() {
     analyser = null;
   }
 
+  function clearDemoMode() {
+    demoMode = false;
+    demoTimers.forEach(timer => window.clearTimeout(timer));
+    demoTimers = [];
+  }
+
+  function scheduleDemoStep(delay, action) {
+    const timer = window.setTimeout(action, delay);
+    demoTimers.push(timer);
+  }
+
+  function startFallbackDemo(error) {
+    clearDemoMode();
+    demoMode = true;
+    const reason = error instanceof Error ? error.message : 'Live-Verbindung nicht erreichbar';
+
+    setWidgetState('speaking');
+    addTranscript('Die Live-Verbindung ist momentan nicht erreichbar. Emma zeigt den Ablauf im Demo-Modus.', 'system');
+    addTranscript(`Technischer Hinweis: ${reason}`, 'system');
+
+    scheduleDemoStep(900, () => {
+      if (!demoMode) return;
+      addTranscript('Guten Tag, hier ist Emma von AlphaflowCRM. Wie kann ich Ihnen weiterhelfen?', 'agent');
+      setWidgetState('listening');
+    });
+
+    scheduleDemoStep(3200, () => {
+      if (!demoMode) return;
+      addTranscript('Ich interessiere mich für eine Beratung und möchte wissen, ob sich Automatisierung für meinen Betrieb lohnt.', 'user');
+      setWidgetState('speaking');
+    });
+
+    scheduleDemoStep(5200, () => {
+      if (!demoMode) return;
+      addTranscript('Sehr gerne. Ich erfasse kurz Ihr Anliegen, qualifiziere die Anfrage und bereite einen passenden Termin vor.', 'agent');
+      setWidgetState('listening');
+    });
+
+    scheduleDemoStep(7600, () => {
+      if (!demoMode) return;
+      addTranscript('Perfekt, ich habe die Anfrage strukturiert und würde sie nun an das CRM übergeben.', 'agent');
+      setWidgetState('listening');
+    });
+  }
+
   function setupAudioAnalyser(activeRoom) {
     activeRoom.on(LiveKitRoomEvent.TrackSubscribed, track => {
       if (track.kind !== 'audio') return;
@@ -184,6 +231,7 @@ function initVoiceAgentWidget() {
 
   async function connect() {
     try {
+      clearDemoMode();
       setWidgetState('connecting');
       addTranscript('Verbindung zu Emma wird aufgebaut...', 'system');
       if (!LiveKitRoom || !LiveKitRoomEvent) {
@@ -209,6 +257,7 @@ function initVoiceAgentWidget() {
 
       room.on(LiveKitRoomEvent.Disconnected, () => {
         cleanupAudio();
+        if (demoMode) return;
         room = null;
         setWidgetState('idle');
         addTranscript('Verbindung getrennt.', 'system');
@@ -233,12 +282,12 @@ function initVoiceAgentWidget() {
         room.disconnect();
         room = null;
       }
-      setWidgetState('error', error instanceof Error ? error.message : 'Verbindungsfehler');
-      addTranscript('Live-Demo ist bereit, benötigt aber einen serverseitigen LiveKit-Token-Endpunkt.', 'system');
+      startFallbackDemo(error);
     }
   }
 
   function disconnect() {
+    clearDemoMode();
     cleanupAudio();
     if (room) {
       room.disconnect();
