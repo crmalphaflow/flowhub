@@ -87,6 +87,7 @@ function initVoiceAgentWidget() {
   let speakingTimeout = 0;
   let demoTimers = [];
   let demoMode = false;
+  let suppressDisconnectNotice = false;
   let LiveKitRoom = null;
   let LiveKitRoomEvent = null;
 
@@ -257,6 +258,10 @@ function initVoiceAgentWidget() {
 
       room.on(LiveKitRoomEvent.Disconnected, () => {
         cleanupAudio();
+        if (suppressDisconnectNotice) {
+          suppressDisconnectNotice = false;
+          return;
+        }
         if (demoMode) return;
         room = null;
         setWidgetState('idle');
@@ -279,6 +284,7 @@ function initVoiceAgentWidget() {
     } catch (error) {
       cleanupAudio();
       if (room) {
+        suppressDisconnectNotice = true;
         room.disconnect();
         room = null;
       }
