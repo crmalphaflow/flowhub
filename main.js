@@ -88,6 +88,7 @@ function initVoiceAgentWidget() {
   let demoTimers = [];
   let demoMode = false;
   let suppressDisconnectNotice = false;
+  let liveConnected = false;
   let LiveKitRoom = null;
   let LiveKitRoomEvent = null;
 
@@ -156,6 +157,7 @@ function initVoiceAgentWidget() {
   }
 
   function startFallbackDemo(error) {
+    if (liveConnected) return;
     clearDemoMode();
     demoMode = true;
     const reason = error instanceof Error ? error.message : 'Live-Verbindung nicht erreichbar';
@@ -232,6 +234,7 @@ function initVoiceAgentWidget() {
 
   async function connect() {
     try {
+      liveConnected = false;
       clearDemoMode();
       setWidgetState('connecting');
       addTranscript('Verbindung zu Emma wird aufgebaut...', 'system');
@@ -278,6 +281,7 @@ function initVoiceAgentWidget() {
       setupAudioAnalyser(room);
       suppressDisconnectNotice = true;
       await room.connect(livekitUrl, token);
+      liveConnected = true;
       suppressDisconnectNotice = false;
       await room.localParticipant.setMicrophoneEnabled(true);
 
@@ -290,12 +294,14 @@ function initVoiceAgentWidget() {
         room.disconnect();
         room = null;
       }
+      liveConnected = false;
       startFallbackDemo(error);
     }
   }
 
   function disconnect() {
     clearDemoMode();
+    liveConnected = false;
     cleanupAudio();
     if (room) {
       room.disconnect();
