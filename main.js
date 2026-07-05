@@ -276,7 +276,9 @@ function initVoiceAgentWidget() {
       });
 
       setupAudioAnalyser(room);
+      suppressDisconnectNotice = true;
       await room.connect(livekitUrl, token);
+      suppressDisconnectNotice = false;
       await room.localParticipant.setMicrophoneEnabled(true);
 
       setWidgetState('listening');
